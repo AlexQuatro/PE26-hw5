@@ -34,8 +34,8 @@
 1. Напишіть функцію, яка повертає частку двох чисел. Виведіть результат роботи функції в консоль.
 */
 
-// const calcDivisionNumber = (x, y) => x / y;
-// console.log(calcDivisionNumber(8, 2));
+const calcDivisionNumber = (x, y) => x / y;
+console.log(calcDivisionNumber(8, 2));
 
 /*
 2. Завдання: Реалізувати функцію, яка виконуватиме математичні операції з введеними користувачем числами.
@@ -108,26 +108,19 @@ const notZero = getReturnEnteringSecondNumber(checkDivisionZero, secondNumber);
 
 // проводимо математичну операцію з введеними числами, повертаємо результат
 const calcSum = (numFirst, numSecond, char) => {
-	let result;
 
 	switch (char) {
 		case '+':
-			result = numFirst + numSecond;
-			break;
+			return numFirst + numSecond;
 		case '-':
-			result = numFirst - numSecond;
-		break;
+			return numFirst - numSecond;
 		case '*':
-			result = numFirst * numSecond;
-		break;
+			return numFirst * numSecond;
 		case '/':
-			result = numFirst / numSecond;
-			break;
+			return numFirst / numSecond;
 		default:
 			break;
 	}
-
-	return result;
 }
 
 console.log(calcSum(firstNumber, notZero, enteredChar));
@@ -141,3 +134,36 @@ console.log(calcSum(firstNumber, notZero, enteredChar));
 - Використовувати синтаксис ES6 для роботи зі змінними та функціями.
 */
 
+const getValidNumber = (message) => {
+	let enterdNumber;
+
+	do {
+		enterdNumber = prompt(message);
+	} while (isNaN(enterdNumber) ||
+		enterdNumber === null ||
+		enterdNumber === '' ||
+		enterdNumber < 0);
+
+	return +enterdNumber;
+}
+
+const number = getValidNumber('Введіть додатне число:');
+
+const calcFactorialNumber = (number) => {
+
+	// let result = 1;
+	// for (let i = 1; i <= number; i++) {
+	// 	result *= i;
+	// }
+	// return result;
+
+	// if (number === 1) {
+	// 	return number;
+	// } else {
+	// 	return number * calcFactorialNumber(number - 1)
+	// }
+
+	return (number === 1) ? number : (number * calcFactorialNumber(number - 1));
+}
+
+console.log(calcFactorialNumber(number));
